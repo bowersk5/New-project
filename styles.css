@@ -1,96 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Source+Sans+3:wght@400;600;700&display=swap");
+
+:root {
+  --bg-1: #fff5e7;
+  --bg-2: #f6f1ff;
+  --ink: #1c2431;
+  --muted: #4e5e74;
+  --card: #ffffff;
+  --line: #dce2ec;
+  --accent: #0e7a65;
+  --accent-strong: #095f4f;
+  --error: #cc2f45;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(145deg, #f3f5f9, #e7ebf3);
-  color: #1d2533;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
   min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 0%, #ffe2ba, transparent 38%),
+    radial-gradient(circle at 90% 100%, #c8dafd, transparent 35%),
+    linear-gradient(145deg, var(--bg-1), var(--bg-2));
   display: grid;
   place-items: center;
   padding: 24px;
 }
 
 .container {
-  width: 100%;
-  max-width: 560px;
-  background: #ffffff;
-  border-radius: 16px;
+  width: min(760px, 100%);
+  background: var(--card);
+  border: 1px solid #ffffffc9;
+  border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 10px 30px rgba(29, 37, 51, 0.12);
+  box-shadow: 0 22px 45px rgba(22, 34, 54, 0.18);
 }
 
-h1 {
+.hero h1 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.35rem);
+  line-height: 1.1;
+}
+
+.eyebrow {
   margin: 0 0 8px;
-  font-size: 1.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  font-weight: 700;
 }
 
 .subtitle {
-  margin: 0 0 20px;
-  color: #4b5568;
+  color: var(--muted);
+  margin: 10px 0 22px;
+  font-size: 1.06rem;
 }
 
-form {
+.fields {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
 }
 
-label {
-  font-weight: 600;
-  margin-top: 6px;
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-weight: 700;
+}
+
+.field:last-child {
+  grid-column: 1 / -1;
+}
+
+.field span {
+  font-size: 1rem;
+}
+
+.field small {
+  font-size: 0.9rem;
+  color: var(--muted);
 }
 
 input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #c9d1e0;
-  border-radius: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
   font-size: 1rem;
+  font-family: inherit;
 }
 
 input:focus {
   outline: none;
-  border-color: #2f6feb;
-  box-shadow: 0 0 0 3px rgba(47, 111, 235, 0.2);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(14, 122, 101, 0.2);
+}
+
+input.invalid {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(204, 47, 69, 0.15);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
 }
 
 button {
-  margin-top: 14px;
-  padding: 12px;
   border: 0;
   border-radius: 10px;
-  background: #1447e6;
-  color: #fff;
-  font-size: 1rem;
+  padding: 11px 14px;
+  font: inherit;
   font-weight: 700;
   cursor: pointer;
+  transition: transform 120ms ease, background-color 120ms ease;
 }
 
 button:hover {
-  background: #123dcc;
+  transform: translateY(-1px);
+}
+
+button[type="submit"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+button[type="submit"]:hover {
+  background: var(--accent-strong);
+}
+
+.ghost {
+  background: #f2f6fb;
+  color: #1f2e44;
 }
 
 .result {
-  margin-top: 24px;
-  padding-top: 18px;
-  border-top: 1px solid #e3e7f0;
+  margin-top: 22px;
+  padding: 18px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid #e9eef5;
 }
 
 .result h2 {
-  margin: 0 0 8px;
+  margin: 0 0 6px;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 #message {
-  margin: 0 0 8px;
-  color: #4b5568;
+  margin: 0 0 6px;
+  color: var(--muted);
 }
 
 .rating-value {
   margin: 0;
-  font-size: 2rem;
-  font-weight: 800;
-  letter-spacing: 0.5px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 6vw, 2.85rem);
+}
+
+.tier {
+  margin: 6px 0 10px;
+  font-weight: 700;
+}
+
+#rating-meter {
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+}
+
+@media (max-width: 620px) {
+  .container {
+    padding: 20px;
+    border-radius: 18px;
+  }
+
+  .fields {
+    grid-template-columns: 1fr;
+  }
+
+  .field:last-child {
+    grid-column: auto;
+  }
 }

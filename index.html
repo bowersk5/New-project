@@ -7,33 +7,59 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <main class="container">
-    <h1>NFL Passer Rating Calculator</h1>
-    <p class="subtitle">Enter passing stats to calculate official NFL passer rating.</p>
+  <main class="container" id="app">
+    <header class="hero">
+      <p class="eyebrow">Quarterback Analytics</p>
+      <h1>NFL Passer Rating Calculator</h1>
+      <p class="subtitle">Calculate official NFL passer rating instantly from basic passing stats.</p>
+    </header>
 
     <form id="rating-form" novalidate>
-      <label for="attempts">Attempts</label>
-      <input id="attempts" name="attempts" type="number" min="1" step="1" required>
+      <div class="fields">
+        <label class="field" for="attempts">
+          <span>Attempts</span>
+          <input id="attempts" name="attempts" type="number" min="1" step="1" required inputmode="numeric" placeholder="e.g. 35">
+          <small>Must be at least 1</small>
+        </label>
 
-      <label for="completions">Completions</label>
-      <input id="completions" name="completions" type="number" min="0" step="1" required>
+        <label class="field" for="completions">
+          <span>Completions</span>
+          <input id="completions" name="completions" type="number" min="0" step="1" required inputmode="numeric" placeholder="e.g. 24">
+          <small>Cannot exceed attempts</small>
+        </label>
 
-      <label for="yards">Passing Yards</label>
-      <input id="yards" name="yards" type="number" min="0" step="1" required>
+        <label class="field" for="yards">
+          <span>Passing Yards</span>
+          <input id="yards" name="yards" type="number" min="0" step="1" required inputmode="numeric" placeholder="e.g. 280">
+          <small>0 or higher</small>
+        </label>
 
-      <label for="touchdowns">Touchdowns</label>
-      <input id="touchdowns" name="touchdowns" type="number" min="0" step="1" required>
+        <label class="field" for="touchdowns">
+          <span>Touchdowns</span>
+          <input id="touchdowns" name="touchdowns" type="number" min="0" step="1" required inputmode="numeric" placeholder="e.g. 2">
+          <small>0 or higher</small>
+        </label>
 
-      <label for="interceptions">Interceptions</label>
-      <input id="interceptions" name="interceptions" type="number" min="0" step="1" required>
+        <label class="field" for="interceptions">
+          <span>Interceptions</span>
+          <input id="interceptions" name="interceptions" type="number" min="0" step="1" required inputmode="numeric" placeholder="e.g. 1">
+          <small>0 or higher</small>
+        </label>
+      </div>
 
-      <button type="submit">Calculate Rating</button>
+      <div class="actions">
+        <button type="button" id="example-btn" class="ghost">Use Example Stats</button>
+        <button type="reset" class="ghost">Clear</button>
+        <button type="submit">Calculate Rating</button>
+      </div>
     </form>
 
     <section class="result" aria-live="polite">
       <h2>Result</h2>
-      <p id="message">Fill out the form to calculate.</p>
+      <p id="message">Enter stats and press Calculate Rating.</p>
       <p id="rating" class="rating-value">--</p>
+      <p id="tier" class="tier">Tier: --</p>
+      <progress id="rating-meter" max="158.3" value="0"></progress>
     </section>
   </main>
 
