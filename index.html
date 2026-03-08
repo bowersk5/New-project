@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NFL Passer Rating Calculator</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="container">
+    <h1>NFL Passer Rating Calculator</h1>
+    <p class="subtitle">Enter passing stats to calculate official NFL passer rating.</p>
+
+    <form id="rating-form" novalidate>
+      <label for="attempts">Attempts</label>
+      <input id="attempts" name="attempts" type="number" min="1" step="1" required>
+
+      <label for="completions">Completions</label>
+      <input id="completions" name="completions" type="number" min="0" step="1" required>
+
+      <label for="yards">Passing Yards</label>
+      <input id="yards" name="yards" type="number" min="0" step="1" required>
+
+      <label for="touchdowns">Touchdowns</label>
+      <input id="touchdowns" name="touchdowns" type="number" min="0" step="1" required>
+
+      <label for="interceptions">Interceptions</label>
+      <input id="interceptions" name="interceptions" type="number" min="0" step="1" required>
+
+      <button type="submit">Calculate Rating</button>
+    </form>
+
+    <section class="result" aria-live="polite">
+      <h2>Result</h2>
+      <p id="message">Fill out the form to calculate.</p>
+      <p id="rating" class="rating-value">--</p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
